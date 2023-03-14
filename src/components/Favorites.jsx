@@ -3,7 +3,7 @@ import { Table } from "flowbite-react";
 
 function Favorites() {
   return (
-    <div className="w-full flex flex-col items-center">
+    <div className="w-full flex flex-col items-center mt-2">
       <h3 className="dark:text-[#22daff] mb-1">
         Favorites
       </h3>
