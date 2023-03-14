@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Favorites from "./components/Favorites";
 import Icon from "./components/Icon";
+import Search from "./components/Search";
 
 function App() {
   const [checked, setChecked] = useState(false);
@@ -35,6 +36,7 @@ function App() {
       <h1 className="text-4xl font-black mb-3 dark:text-[#22daff]">
         React Weather App
       </h1>
+      <Search />
       <Favorites />
       {loading ? null : (
         <div className="flex justify-end items-center mt-3">
