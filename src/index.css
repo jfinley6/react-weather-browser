@@ -5,3 +5,24 @@
 body * {
     @apply transition-colors duration-500
 }
+
+.pac-item:hover {
+    cursor: pointer;
+}
+
+.dark .pac-item:hover {
+    background-color: rgb(31, 94, 201);
+}
+
+.dark .pac-container {
+    background-color: rgb(55 65 81);
+}
+
+.dark .pac-item-query,
+.dark .pac-item {
+    color: #9CA3AF;
+}
+
+.dark .pac-matched {
+    color: #e2e2e2;
+}
