@@ -5,7 +5,7 @@ function Favorites() {
   return (
     <div className="w-full flex flex-col items-center mt-2">
       <h3 className="dark:text-[#22daff] mb-1">Favorites</h3>
-      <div className="overflow-y-auto max-h-[50vh] w-full md:w-3/4">
+      <div className="overflow-y-auto overflow-x-hidden max-h-[50vh] w-full md:w-3/4">
         <Table>
           <Table.Head>
             <Table.HeadCell></Table.HeadCell>
