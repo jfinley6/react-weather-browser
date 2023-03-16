@@ -4,17 +4,19 @@ import "./App.css";
 import Favorites from "./components/Favorites";
 import Icon from "./components/Icon";
 import Search from "./components/Search";
+import Weather from "./components/Weather";
 import { getFavoriteCities, getTheme } from "./functions/getLocalStorage";
 
-function App() {
+const App = () => {
   const [checked, setChecked] = useState(false);
   const [componentLoaded, setComponentLoaded] = useState(false);
+  const [weatherLoaded, setWeatherLoaded] = useState(false);
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-    getFavoriteCities(setFavorites)
-    getTheme(setChecked, setComponentLoaded)
-  },[]);
+    getFavoriteCities(setFavorites);
+    getTheme(setChecked, setComponentLoaded);
+  }, []);
 
   if (!componentLoaded) return null;
 
@@ -25,6 +27,7 @@ function App() {
           React Weather Browser
         </h1>
         <Search />
+        {weatherLoaded ? <Weather /> : null}
         <Favorites />
         <Icon />
       </div>
