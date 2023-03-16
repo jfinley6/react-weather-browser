@@ -11,7 +11,7 @@ function Favorites() {
       <Table.Row
         key={`${favorite.city},${favorite.state}`}
         className="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 hover:cursor-pointer transform 
-                                transition-all duration-1000 rounded-lg"
+                                transition-all duration-500 rounded-lg"
       >
         <Table.Cell className="whitespace-nowrap text-xl">
           {i+1}
