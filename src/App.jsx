@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div className="font-roboto">
-      <h1 className="text-3xl md:text-4xl font-black mb-3 dark:text-[#22daff]">
+      <h1 className="text-3xl md:text-5xl font-black mb-3 md:mb-6 dark:text-[#22daff]">
         React Weather Browser
       </h1>
       <Search />
