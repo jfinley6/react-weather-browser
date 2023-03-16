@@ -5,15 +5,16 @@ import { Context } from "../context/Store";
 function Favorites() {
   const { favorites } = useContext(Context);
 
-  const favoritesList = favorites.map((favorite) => {
+  const favoritesList = favorites.map((favorite, i) => {
+    i += 0
     return (
       <Table.Row
         key={`${favorite.city},${favorite.state}`}
-        className="bg-white dark:border-gray-700 dark:bg-gray-800 hover:bg-gray-200 hover:cursor-pointer transform 
-                                transition duration-500 hover:scale-[102%] rounded-lg dark:hover:bg-gray-600"
+        className="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 hover:cursor-pointer transform 
+                                transition-all duration-1000 rounded-lg"
       >
-        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-          1
+        <Table.Cell className="whitespace-nowrap text-xl">
+          {i+1}
         </Table.Cell>
         <Table.Cell>{favorite.city}</Table.Cell>
         <Table.Cell>{favorite.state}</Table.Cell>
