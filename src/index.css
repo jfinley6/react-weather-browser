@@ -6,6 +6,11 @@ body * {
     @apply transition-colors duration-500
 }
 
+.pac-item, .pac-item-query {
+    font-size: large;
+    letter-spacing: 1px;
+}
+
 .pac-item:hover {
     cursor: pointer;
 }
