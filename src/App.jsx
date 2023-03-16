@@ -7,20 +7,20 @@ import { Context } from "./context/Store";
 
 function App() {
   const [checked, setChecked] = useState(false);
-  const [componentLoaded, setComponentLoaded] = useState(true);
+  const [componentLoaded, setComponentLoaded] = useState(false);
 
   useEffect(() => {
     if (localStorage.theme === "dark") {
       document.documentElement.classList.add("dark");
       setChecked(true);
-      setComponentLoaded(false);
+      setComponentLoaded(true);
     } else {
       document.documentElement.classList.remove("dark");
-      setComponentLoaded(false);
+      setComponentLoaded(true);
     }
   });
 
-  if (componentLoaded) return null;
+  if (!componentLoaded) return null;
 
   return (
     <Context.Provider value={{ checked, setChecked }}>
