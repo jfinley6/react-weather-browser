@@ -6,16 +6,14 @@ function Favorites() {
   const { favorites } = useContext(Context);
 
   const favoritesList = favorites.map((favorite, i) => {
-    i += 0
+    i += 0;
     return (
       <Table.Row
         key={`${favorite.city},${favorite.state}`}
         className="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 hover:cursor-pointer transform 
                                 transition-all duration-500 rounded-lg"
       >
-        <Table.Cell className="whitespace-nowrap text-xl">
-          {i+1}
-        </Table.Cell>
+        <Table.Cell className="whitespace-nowrap text-xl">{i + 1}</Table.Cell>
         <Table.Cell>{favorite.city}</Table.Cell>
         <Table.Cell>{favorite.state}</Table.Cell>
       </Table.Row>
