@@ -1,12 +1,26 @@
 import React from "react";
 import Autocomplete from "react-google-autocomplete";
 import { Button } from "flowbite-react";
+import $ from "jquery";
 
-function Search() {
-  
+const Search = () => {
+  const handleInput = () => {
+    if ($("#google-input").val().length > 0) {
+      $("#clear-button").removeClass("hidden");
+    } else {
+      $("#clear-button").addClass("hidden");
+    }
+  };
+
+  const handleClick = () => {
+    $("#google-input").val("")
+    $("#clear-button").addClass("hidden");
+  };
+
   return (
     <div className="w-full md:w-1/2 left-[50%] translate-x-[-50%] relative">
       <Autocomplete
+      spellCheck={"false"}
         data-testid="autocomplete"
         id="google-input"
         apiKey={import.meta.env.VITE_GOOGLE_AUTOCOMPLETE_KEY}
@@ -15,18 +29,23 @@ function Search() {
         onPlaceSelected={(place) => {
           console.log(place);
         }}
-        options={{ componentRestrictions: { country: "us" } }}
+        options={{
+          componentRestrictions: { country: "us" },
+        }}
+        onChange={handleInput}
       />
       <Button
+        onClick={handleClick}
         data-testid="clear-button"
         size={"xs"}
         style={{ margin: "auto" }}
-        className="absolute right-3 top-0 bottom-0"
+        id="clear-button"
+        className="absolute hidden right-3 top-0 bottom-0"
       >
         Clear
       </Button>
     </div>
   );
-}
+};
 
 export default Search;
