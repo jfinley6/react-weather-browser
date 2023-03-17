@@ -6,6 +6,18 @@ body * {
     @apply transition-colors duration-500 
 }
 
+.pac-container::after {
+    display: none;
+}
+
+.pac-icon {
+    display: none;
+}
+
+.pac-item {
+    margin-left: 5px;
+}
+
 .pac-item, .pac-item-query {
     font-size: large;
     letter-spacing: 1px;
