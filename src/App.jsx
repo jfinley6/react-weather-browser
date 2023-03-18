@@ -12,6 +12,18 @@ const App = () => {
   const [componentLoaded, setComponentLoaded] = useState(false);
   const [weatherLoaded, setWeatherLoaded] = useState(false);
   const [favorites, setFavorites] = useState([]);
+  const [weatherData, setWeatherData] = useState({
+    city: "",
+    state: "",
+    time: "",
+    sunrise: "",
+    sunset: "",
+    icon: "",
+    description: "",
+    wind: "",
+    humidity: "",
+    temp: "",
+  });
 
   useEffect(() => {
     getFavoriteCities(setFavorites);
@@ -21,7 +33,16 @@ const App = () => {
   if (!componentLoaded) return null;
 
   return (
-    <Context.Provider value={{ checked, setChecked, favorites }}>
+    <Context.Provider
+      value={{
+        checked,
+        setChecked,
+        favorites,
+        weatherData,
+        setWeatherData,
+        setWeatherLoaded
+      }}
+    >
       <div className="font-roboto">
         <h1 className="text-3xl md:text-5xl font-black mb-3 md:mb-6 dark:text-[#22daff]">
           React Weather Browser
@@ -33,6 +54,6 @@ const App = () => {
       </div>
     </Context.Provider>
   );
-}
+};
 
 export default App;
