@@ -9,7 +9,7 @@ describe("SearchComponent", () => {
     const autocomplete = getByTestId("autocomplete");
 
     // The button should not be visible before typing
-    expect(autocomplete).toHaveValue("");
+    expect(clearButton).toHaveClass("hidden");
 
     // Type into the input field with anything
     fireEvent.change(autocomplete, { target: { value: " " } });
