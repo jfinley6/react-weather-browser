@@ -12,9 +12,9 @@ function Weather() {
     <div className="flex mt-4 justify-center">
       <div className="card min-w-sm w-full md:w-1/2 border dark:text-[#e5e2d8] dark:border-gray-600 test  shadow-lg hover:shadow-shadow-xl bg-green-600 dark:bg-gray-700 text-purple-50 rounded-md">
         <h2 className="text-md mb-2 px-4">
-          <div className="flex justify-between items-center">
+          <div className="flex md:-mb-7 justify-between items-center">
             <div className="badge flex items-center">
-              <span className=" h-12px text-md font-semibold w-12px  rounded">
+              <span className=" text-md font-semibold text-2xl  rounded">
                 {weatherData.city}, {weatherData.state}
               </span>
             </div>
@@ -27,7 +27,7 @@ function Weather() {
         <div className="flex justify-center items-center">
           <div className="flex flex-col justify-center items-center w-full">
             <img
-              className="w-2/5"
+              className="w-2/5 p-5 pt-0 pb-0 md:-mb-8"
               src={`http://openweathermap.org/img/wn/${weatherData.icon}@2x.png`}
             />
             <div style={{ textTransform: "capitalize" }}>
