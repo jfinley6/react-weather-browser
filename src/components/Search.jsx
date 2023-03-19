@@ -20,7 +20,7 @@ const Search = () => {
   const handleClick = () => {
     $("#google-input").val("");
     $("#clear-button").addClass("hidden");
-    $("#google-input").focus()
+    $("#google-input").trigger('focus')
     
   };
 
