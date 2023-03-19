@@ -20,6 +20,8 @@ const Search = () => {
   const handleClick = () => {
     $("#google-input").val("");
     $("#clear-button").addClass("hidden");
+    $("#google-input").focus()
+    
   };
 
   const handleData = (city, state) => {
