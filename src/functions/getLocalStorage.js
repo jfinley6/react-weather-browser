@@ -26,6 +26,10 @@ export const getFavoriteCities = (setFavorites) => {
   }
 };
 
+export const setLocalStorageCities = (favorites) => {
+  localStorage.setItem("cities", JSON.stringify(favorites))
+}
+
 export const getTheme = (setChecked, setComponentLoaded) => {
   if (localStorage.theme === "dark") {
     document.documentElement.classList.add("dark");
