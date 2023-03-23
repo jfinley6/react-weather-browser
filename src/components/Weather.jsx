@@ -3,10 +3,30 @@ import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import ProgressProvider from "../functions/progressProvider"
 import { Context } from "../context/Store";
+import { setLocalStorageCities} from '../functions/getLocalStorage';
 
 
 function Weather() {
-  const { weatherData } = useContext(Context);
+  const { weatherData, favorites, setFavorites } = useContext(Context);
+
+  const hearted = favorites.some((favorite) => {
+    return favorite.city === weatherData.city && favorite.state === weatherData.state
+  })
+
+  const handleFavorite = () => {
+    const oldFavorites = JSON.parse(localStorage.getItem("cities"))
+    if (hearted) {
+      const newFavorites = oldFavorites.filter((favorite) => {
+        return weatherData.city !== favorite.city && weatherData.state !== favorite.state 
+      })
+      setFavorites([...newFavorites])
+      setLocalStorageCities(newFavorites)
+    } else {
+      const newFavorites = [...oldFavorites, {city: weatherData.city, state: weatherData.state}]
+      setFavorites([...newFavorites])
+      setLocalStorageCities(newFavorites)
+    }
+  }
 
   return (
     <div className="flex mt-4 justify-center">
@@ -18,8 +38,8 @@ function Weather() {
                 {weatherData.city}, {weatherData.state}
               </span>
             </div>
-            <span className="text-4xl md:text-5xl hover:scale-150 transition-all cursor-pointer font-bold ">
-              ✩
+            <span onClick={handleFavorite} className="text-4xl text-red-600 md:text-5xl hover:scale-150 transition-all cursor-pointer font-bold ">
+              {hearted ? "★" : "☆"}
             </span>
           </div>
         </h2>
