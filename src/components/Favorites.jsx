@@ -3,12 +3,15 @@ import { Table } from "flowbite-react";
 import { Context } from "../context/Store";
 
 function Favorites() {
-  const { favorites } = useContext(Context);
+  const { favorites, handleData } = useContext(Context);
 
   const favoritesList = favorites.map((favorite, i) => {
     i += 0;
     return (
       <Table.Row
+        onClick={() => {
+          handleData(favorite.city, favorite.state);
+        }}
         key={`${favorite.city},${favorite.state}`}
         className="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 hover:cursor-pointer transform 
                                 transition-all duration-500 rounded-lg"

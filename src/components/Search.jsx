@@ -3,14 +3,10 @@ import Autocomplete from "react-google-autocomplete";
 import { Button } from "flowbite-react";
 import $ from "jquery";
 import { Context } from "../context/Store";
-import {
-  weatherDataFetch,
-  currentTime,
-  sunriseSunset,
-} from "../functions/getWeatherData";
+
 
 const Search = () => {
-  const { weatherData, setWeatherData, setWeatherLoaded, setLoading } = useContext(Context);
+  const { handleData } = useContext(Context);
 
   const handleInput = () => {
     if ($("#google-input").val().length > 0) {
@@ -24,34 +20,6 @@ const Search = () => {
     $("#google-input").val("");
     $("#clear-button").addClass("hidden");
     $("#google-input").trigger("focus");
-  };
-
-  const handleData = (city, state) => {
-    weatherDataFetch(city, state)
-      .then((data) => {
-        setLoading(true)
-        setWeatherLoaded(false)
-        setWeatherData({
-          ...weatherData,
-          city: city,
-          state: state,
-          time: currentTime(data.timezone),
-          wind: data.wind.speed,
-          temp: data.main.temp,
-          humidity: data.main.humidity,
-          icon: data.weather[0].icon,
-          description: data.weather[0].description,
-          sunrise: sunriseSunset(data.timezone, data.sys.sunrise),
-          sunset: sunriseSunset(data.timezone, data.sys.sunset),
-        });
-      })
-      .then(() => {
-        setWeatherLoaded(true);
-        setLoading(false)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
   };
 
   return (
