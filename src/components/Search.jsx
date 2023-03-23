@@ -3,11 +3,14 @@ import Autocomplete from "react-google-autocomplete";
 import { Button } from "flowbite-react";
 import $ from "jquery";
 import { Context } from "../context/Store";
-import { weatherDataFetch, currentTime, sunriseSunset } from "../functions/getWeatherData";
+import {
+  weatherDataFetch,
+  currentTime,
+  sunriseSunset,
+} from "../functions/getWeatherData";
 
 const Search = () => {
-  const { weatherData, setWeatherData, setWeatherLoaded } =
-    useContext(Context);
+  const { weatherData, setWeatherData, setWeatherLoaded, setLoading } = useContext(Context);
 
   const handleInput = () => {
     if ($("#google-input").val().length > 0) {
@@ -20,29 +23,35 @@ const Search = () => {
   const handleClick = () => {
     $("#google-input").val("");
     $("#clear-button").addClass("hidden");
-    $("#google-input").trigger('focus')
-    
+    $("#google-input").trigger("focus");
   };
 
   const handleData = (city, state) => {
-    weatherDataFetch(city, state).then((data) => {
-      console.log(data);
-      setWeatherData({
-        ...weatherData,
-        city: city,
-        state: state,
-        time: currentTime(data.timezone),
-        wind: data.wind.speed,
-        temp: data.main.temp,
-        humidity: data.main.humidity,
-        icon: data.weather[0].icon,
-        description: data.weather[0].description,
-        sunrise: sunriseSunset(data.timezone, data.sys.sunrise),
-        sunset: sunriseSunset(data.timezone, data.sys.sunset)
-      });
-    }).then(() => {
-      setWeatherLoaded(true)
-    });
+    weatherDataFetch(city, state)
+      .then((data) => {
+        setLoading(true)
+        setWeatherLoaded(false)
+        setWeatherData({
+          ...weatherData,
+          city: city,
+          state: state,
+          time: currentTime(data.timezone),
+          wind: data.wind.speed,
+          temp: data.main.temp,
+          humidity: data.main.humidity,
+          icon: data.weather[0].icon,
+          description: data.weather[0].description,
+          sunrise: sunriseSunset(data.timezone, data.sys.sunrise),
+          sunset: sunriseSunset(data.timezone, data.sys.sunset),
+        });
+      })
+      .then(() => {
+        setWeatherLoaded(true);
+        setLoading(false)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   };
 
   return (
@@ -55,11 +64,16 @@ const Search = () => {
         placeholder="Search for Cities Across The United States..."
         className="flex w-full p-2 pl-3 text-sm md:text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
         onPlaceSelected={(place) => {
-          handleData(
-            place.address_components[0].long_name,
-            place.address_components[2].short_name
-          );
+          let city = place.formatted_address
+            .replace(/[0-9]/g, "")
+            .split(", ")[0];
+          let state = place.formatted_address
+            .replace(/[0-9]/g, "")
+            .split(", ")[1];
+            console.log(city, state)
+          handleData(city, state);
         }}
+        
         options={{
           componentRestrictions: { country: "us" },
         }}
