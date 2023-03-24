@@ -1,36 +1,43 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import ProgressProvider from "../functions/progressProvider"
+import ProgressProvider from "../functions/progressProvider";
 import { Context } from "../context/Store";
-import { setLocalStorageCities} from '../functions/getLocalStorage';
-
+import { setLocalStorageCities } from "../functions/getLocalStorage";
 
 function Weather() {
   const { weatherData, favorites, setFavorites } = useContext(Context);
 
   const hearted = favorites.some((favorite) => {
-    return favorite.city === weatherData.city && favorite.state === weatherData.state
-  })
+    return (
+      favorite.city === weatherData.city && favorite.state === weatherData.state
+    );
+  });
 
   const handleFavorite = () => {
-    const oldFavorites = JSON.parse(localStorage.getItem("cities"))
+    const oldFavorites = JSON.parse(localStorage.getItem("cities"));
     if (hearted) {
       const newFavorites = oldFavorites.filter((favorite) => {
-        return weatherData.city !== favorite.city && weatherData.state !== favorite.state 
-      })
-      setFavorites([...newFavorites])
-      setLocalStorageCities(newFavorites)
+        return (
+          weatherData.city !== favorite.city &&
+          weatherData.state !== favorite.state
+        );
+      });
+      setFavorites([...newFavorites]);
+      setLocalStorageCities(newFavorites);
     } else {
-      const newFavorites = [...oldFavorites, {city: weatherData.city, state: weatherData.state}]
-      setFavorites([...newFavorites])
-      setLocalStorageCities(newFavorites)
+      const newFavorites = [
+        ...oldFavorites,
+        { city: weatherData.city, state: weatherData.state },
+      ];
+      setFavorites([...newFavorites]);
+      setLocalStorageCities(newFavorites);
     }
-  }
+  };
 
   return (
     <div className="flex mt-4 justify-center">
-      <div className="card min-w-sm w-full md:w-1/2 border dark:text-[#e5e2d8] dark:border-gray-600 test  shadow-lg hover:shadow-shadow-xl bg-green-600 dark:bg-gray-700 text-purple-50 rounded-md">
+      <div className="card min-w-sm w-full md:max-h-[70vh] md:w-full border dark:text-[#e5e2d8] dark:border-gray-600 test  shadow-lg hover:shadow-shadow-xl bg-green-600 dark:bg-gray-700 text-purple-50 rounded-md">
         <h2 className="text-md mb-2 px-4">
           <div className="flex md:-mb-7 justify-between items-center">
             <div className="badge flex items-center">
@@ -38,7 +45,10 @@ function Weather() {
                 {weatherData.city}, {weatherData.state}
               </span>
             </div>
-            <span onClick={handleFavorite} className="text-4xl text-red-600 md:text-5xl hover:scale-150 transition-all cursor-pointer font-bold ">
+            <span
+              onClick={handleFavorite}
+              className="text-4xl text-red-600 md:text-5xl hover:scale-150 transition-all cursor-pointer font-bold "
+            >
               {hearted ? "★" : "☆"}
             </span>
           </div>
@@ -137,4 +147,4 @@ function Weather() {
   );
 }
 
-export default Weather
+export default Weather;
