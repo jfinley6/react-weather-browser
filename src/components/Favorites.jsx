@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Table } from "flowbite-react";
 import { Context } from "../context/Store";
+import Icon from "./Icon";
 
 function Favorites() {
   const { favorites, handleData } = useContext(Context);
@@ -24,9 +25,9 @@ function Favorites() {
   });
 
   return (
-    <div className="w-full flex flex-col items-center mt-3">
-      <h3 className="dark:text-[#22daff] mb-1">Favorites</h3>
-      <div className="overflow-y-auto overflow-x-hidden max-h-[50vh] w-full md:w-3/4">
+    <div className="w-full md:w-1/2 flex flex-col items-center mt-3">
+      <h3 className="dark:text-[#22daff] text-3xl mb-3">Favorites</h3>
+      <div className="overflow-y-auto overflow-x-hidden max-h-[70vh] w-full md:w-3/4">
         <Table>
           <Table.Head>
             <Table.HeadCell></Table.HeadCell>
@@ -42,6 +43,7 @@ function Favorites() {
           </Table.Body>
         </Table>
       </div>
+      <Icon />
     </div>
   );
 }
