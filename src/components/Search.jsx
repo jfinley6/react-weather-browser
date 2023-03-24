@@ -23,7 +23,7 @@ const Search = () => {
   };
 
   return (
-    <div className="w-full md:w-1/2 left-[50%] translate-x-[-50%] relative">
+    <div className="w-full md:w-3/4 left-[50%] translate-x-[-50%] relative">
       <Autocomplete
         spellCheck={"false"}
         data-testid="autocomplete"
