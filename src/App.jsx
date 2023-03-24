@@ -31,7 +31,7 @@ const App = () => {
     humidity: "",
     temp: "",
   });
-  
+
   useEffect(() => {
     getFavoriteCities(setFavorites);
     getTheme(setChecked, setComponentLoaded);
@@ -82,14 +82,17 @@ const App = () => {
   return (
     <Context.Provider value={contextValues}>
       <div className="font-roboto">
-        <h1 className="text-3xl md:text-5xl font-black mb-3 md:mb-6 dark:text-[#22daff]">
-          React Weather Browser
-        </h1>
-        <Search />
-        {loading ? <Loading /> : null}
-        {weatherLoaded ? <Weather /> : null}
-        <Favorites />
-        <Icon />
+        <div className="md:flex md:items-center">
+          <div className="md:w-1/2">
+            <h1 className="text-3xl md:text-4xl font-black mb-3 md:mb-6 dark:text-[#22daff]">
+              React Weather Browser
+            </h1>
+            <Search />
+            {loading ? <Loading /> : null}
+            {weatherLoaded ? <Weather /> : null}
+          </div>
+          <Favorites />
+        </div>
       </div>
     </Context.Provider>
   );
