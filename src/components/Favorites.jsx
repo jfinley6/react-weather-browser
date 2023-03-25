@@ -17,7 +17,7 @@ function Favorites() {
         className="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 hover:cursor-pointer transform 
                                 transition-all duration-500 rounded-lg"
       >
-        <Table.Cell className="whitespace-nowrap text-xl">{i + 1}</Table.Cell>
+        <Table.Cell className="text-xl">{i + 1}</Table.Cell>
         <Table.Cell>{favorite.city}</Table.Cell>
         <Table.Cell>{favorite.state}</Table.Cell>
       </Table.Row>
@@ -25,16 +25,18 @@ function Favorites() {
   });
 
   return (
-    <div className="w-full md:w-1/2 flex flex-col items-center mt-3">
-      <h3 className="dark:text-[#22daff] text-3xl mb-3">Favorites</h3>
-      <div className="overflow-y-auto overflow-x-hidden max-h-[70vh] w-full md:w-3/4">
-        <Table>
-          <Table.Head>
-            <Table.HeadCell></Table.HeadCell>
-            <Table.HeadCell className="text-gray-900 dark:text-[#e5e2d8]">
+    <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
+      <h3 className="dark:text-[#22daff] mt-2 md:mt-0 text-3xl md:text-4xl mb-3 md:mb-6">
+        Favorites
+      </h3>
+      <div className="overflow-y-auto max-h-[70vh] w-full md:w-5/6">
+        <Table className="table-fixed">
+          <Table.Head className="h-[40px]">
+            <Table.HeadCell className="w-[77px]"></Table.HeadCell>
+            <Table.HeadCell className="w-[124px] text-gray-900 dark:text-[#e5e2d8]">
               City
             </Table.HeadCell>
-            <Table.HeadCell className="text-gray-900 dark:text-[#e5e2d8]">
+            <Table.HeadCell className="w-[140px] text-gray-900 dark:text-[#e5e2d8]">
               State
             </Table.HeadCell>
           </Table.Head>
@@ -43,7 +45,7 @@ function Favorites() {
           </Table.Body>
         </Table>
       </div>
-      <Icon />
+      {/* <Icon /> */}
     </div>
   );
 }
