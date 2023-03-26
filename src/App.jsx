@@ -38,10 +38,10 @@ const App = () => {
   }, []);
 
   const handleData = (city, state) => {
+    setLoading(true);
+    setWeatherLoaded(false);
     weatherDataFetch(city, state)
       .then((data) => {
-        setLoading(true);
-        setWeatherLoaded(false);
         setWeatherData({
           ...weatherData,
           city: city,
@@ -82,7 +82,7 @@ const App = () => {
   return (
     <Context.Provider value={contextValues}>
       <div className="font-roboto">
-        <div className="md:flex md:items-center">
+        <div className="md:flex md:items-start">
           <div className="md:w-1/2">
             <h1 className="text-3xl md:text-4xl font-black mb-3 md:mb-6 dark:text-[#22daff]">
               React Weather Browser
