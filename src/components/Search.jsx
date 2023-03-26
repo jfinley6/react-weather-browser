@@ -6,7 +6,7 @@ import { Context } from "../context/Store";
 
 
 const Search = () => {
-  const { handleData } = useContext(Context);
+  const { handleData, setLoading } = useContext(Context);
 
   const handleInput = () => {
     if ($("#google-input").val().length > 0) {
@@ -30,15 +30,15 @@ const Search = () => {
         id="google-input"
         apiKey={import.meta.env.VITE_GOOGLE_AUTOCOMPLETE_KEY}
         placeholder="Search for Cities Across The United States..."
-        className="flex w-full p-2 pl-3 text-sm md:text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+        className="flex w-full h-[40px] p-2 pl-3 text-sm md:text-md text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
         onPlaceSelected={(place) => {
+          setLoading(true)
           let city = place.formatted_address
             .replace(/[0-9]/g, "")
             .split(", ")[0];
           let state = place.formatted_address
             .replace(/[0-9]/g, "")
             .split(", ")[1];
-            console.log(city, state)
           handleData(city, state);
         }}
         
