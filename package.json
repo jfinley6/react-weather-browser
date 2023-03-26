@@ -18,7 +18,8 @@
     "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.2.0",
     "react-google-autocomplete": "^2.7.3",
-    "react-icons": "^4.8.0"
+    "react-icons": "^4.8.0",
+    "spinners-react": "^1.0.7"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
