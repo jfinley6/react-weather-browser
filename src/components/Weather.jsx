@@ -37,7 +37,7 @@ function Weather() {
 
   return (
     <div className="flex mt-4 justify-center">
-      <div className="card min-w-sm w-full md:max-h-[70vh] md:w-full border dark:text-[#e5e2d8] dark:border-gray-600 test  shadow-lg hover:shadow-shadow-xl bg-green-600 dark:bg-gray-700 text-purple-50 rounded-md">
+      <div className="card min-w-sm w-full md:max-h-[70vh] md:w-full border dark:text-[#e5e2d8] dark:border-gray-600 test  shadow-lg bg-green-600 dark:bg-gray-700 text-purple-50 rounded-md">
         <h2 className="text-md mb-2 px-4">
           <div className="flex md:-mb-7 justify-between items-center">
             <div className="badge flex items-center">
@@ -45,12 +45,14 @@ function Weather() {
                 {weatherData.city}, {weatherData.state}
               </span>
             </div>
-            <span
+            <button
+            id="heart"
               onClick={handleFavorite}
-              className="text-4xl text-red-600 md:text-5xl hover:scale-150 transition-all cursor-pointer font-bold "
+              className="text-4xl text-red-600 md:text-5xl w-1/6 font-bold hover:scale-125 transition-all duration-500  "
             >
-              {hearted ? "★" : "☆"}
-            </span>
+              <span>{hearted ? "★" : "☆"}</span>
+            </button>
+
           </div>
         </h2>
 
