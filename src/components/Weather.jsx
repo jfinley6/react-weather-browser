@@ -14,6 +14,10 @@ function Weather() {
     );
   });
 
+  const brightIcons = ["13d", "13n", "50d", "50n, 01n"]
+  const raiseIconBrightness = brightIcons.includes(weatherData.icon) ? "brightness-200" : "brightness-100"
+  
+
   const handleFavorite = () => {
     const oldFavorites = JSON.parse(localStorage.getItem("cities"));
     if (hearted) {
@@ -58,7 +62,7 @@ function Weather() {
         <div className="flex justify-center items-center">
           <div className="flex flex-col justify-center items-center w-full">
             <img
-              className="w-2/5 p-5 pt-0 pb-0 md:-mb-8"
+              className={`w-2/5 p-5 pt-0 pb-0 md:-mb-8 ${raiseIconBrightness}`}
               src={`http://openweathermap.org/img/wn/${weatherData.icon}@2x.png`}
             />
             <div
