@@ -45,7 +45,7 @@ function Favorites() {
           </Table.Body>
         </Table>
       </div>
-      {/* <Icon /> */}
+      <Icon />
     </div>
   );
 }
