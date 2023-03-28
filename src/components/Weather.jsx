@@ -14,9 +14,8 @@ function Weather() {
     );
   });
 
-  const brightIcons = ["13d", "13n", "50d", "50n, 01n"]
+  const brightIcons = ["13d", "13n", "50d", "50n", "01n"]
   const raiseIconBrightness = brightIcons.includes(weatherData.icon) ? "dark:brightness-200" : "dark:brightness-100"
-  
 
   const handleFavorite = () => {
     const oldFavorites = JSON.parse(localStorage.getItem("cities"));
