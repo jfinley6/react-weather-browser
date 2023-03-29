@@ -5,7 +5,7 @@ function Loading() {
   return (
     <div className='w-full flex justify-center mt-4'>
       <SpinnerCircularFixed
-        size={50}
+        size={100}
         thickness={100}
         speed={100}
         color="#36ad47"
