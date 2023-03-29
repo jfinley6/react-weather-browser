@@ -4,6 +4,8 @@ import "react-circular-progressbar/dist/styles.css";
 import ProgressProvider from "../functions/progressProvider";
 import { Context } from "../context/Store";
 import { setLocalStorageCities } from "../functions/getLocalStorage";
+import { motion } from "framer-motion";
+
 
 function Weather() {
   const { weatherData, favorites, setFavorites } = useContext(Context);
@@ -40,7 +42,16 @@ function Weather() {
 
   return (
     <div className="flex mt-4 justify-center">
-      <div className="card min-w-sm w-full md:max-h-[70vh] md:w-full border dark:text-[#e5e2d8] dark:border-gray-600 test shadow-lg bg-neutral-100 dark:bg-gray-700 text-purple-50 rounded-md">
+      <motion.div
+        exit={{ opacity: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 0.5,
+          ease: "linear",
+        }}
+        className="card min-w-sm w-full md:max-h-[70vh] md:w-full border dark:text-[#e5e2d8] dark:border-gray-600 test shadow-lg bg-neutral-100 dark:bg-gray-700 text-purple-50 rounded-md"
+      >
         <h2 className="text-md mb-2 px-4">
           <div className="flex md:-mb-7 justify-between items-center">
             <div className="badge flex items-center">
@@ -161,7 +172,7 @@ function Weather() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
