@@ -27,10 +27,22 @@ export const getFavoriteCities = (setFavorites) => {
 };
 
 export const setLocalStorageCities = (favorites) => {
-  localStorage.setItem("cities", JSON.stringify(favorites))
-}
+  localStorage.setItem("cities", JSON.stringify(favorites));
+};
 
-export const getTheme = (setChecked, setComponentLoaded) => {
+export const getTheme = (
+  setChecked,
+  setComponentLoaded,
+  setUnitChecked,
+  setUnits
+) => {
+  if (localStorage.units === "imperial") {
+    setUnitChecked(false);
+    setUnits("imperial");
+  } else {
+    setUnitChecked(true);
+    setUnits("metric");
+  }
   if (localStorage.theme === "dark") {
     document.documentElement.classList.add("dark");
     setChecked(true);
@@ -39,4 +51,4 @@ export const getTheme = (setChecked, setComponentLoaded) => {
     document.documentElement.classList.remove("dark");
     setComponentLoaded(true);
   }
-}
+};
