@@ -12,6 +12,7 @@ function Favorites() {
       <Table.Row
         onClick={() => {
           handleData(favorite.city, favorite.state);
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         }}
         key={`${favorite.city},${favorite.state}`}
         className="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 hover:cursor-pointer transform 
