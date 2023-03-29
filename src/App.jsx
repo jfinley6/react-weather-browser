@@ -15,10 +15,12 @@ import {
 
 const App = () => {
   const [checked, setChecked] = useState(false);
+  const [unitChecked, setUnitChecked] = useState(false)
   const [componentLoaded, setComponentLoaded] = useState(false);
   const [weatherLoaded, setWeatherLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [favorites, setFavorites] = useState([]);
+  const [units, setUnits] = useState("imperial")
   const [weatherData, setWeatherData] = useState({
     city: "",
     state: "",
@@ -34,7 +36,7 @@ const App = () => {
 
   useEffect(() => {
     getFavoriteCities(setFavorites);
-    getTheme(setChecked, setComponentLoaded);
+    getTheme(setChecked, setComponentLoaded, setUnitChecked, setUnits);
   }, []);
 
   const handleData = (city, state) => {
@@ -75,6 +77,10 @@ const App = () => {
     setWeatherLoaded,
     setLoading,
     handleData,
+    units,
+    setUnits,
+    unitChecked,
+    setUnitChecked
   };
 
   if (!componentLoaded) return null;
