@@ -49,6 +49,7 @@ function Weather() {
         transition={{
           duration: 0.5,
           ease: "linear",
+          delay: 0.1
         }}
         className="card min-w-sm w-full md:max-h-[70vh] md:w-full border dark:text-[#e5e2d8] dark:border-gray-600 test shadow-lg bg-neutral-100 dark:bg-gray-700 text-purple-50 rounded-md"
       >
