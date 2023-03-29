@@ -6,9 +6,8 @@ import { Context } from "../context/Store";
 import { setLocalStorageCities } from "../functions/getLocalStorage";
 import { motion } from "framer-motion";
 
-
 function Weather() {
-  const { weatherData, favorites, setFavorites } = useContext(Context);
+  const { weatherData, favorites, setFavorites, units } = useContext(Context);
 
   const hearted = favorites.some((favorite) => {
     return (
@@ -16,8 +15,10 @@ function Weather() {
     );
   });
 
-  const brightIcons = ["13d", "13n", "50d", "50n", "01n"]
-  const raiseIconBrightness = brightIcons.includes(weatherData.icon) ? "dark:brightness-200" : "dark:brightness-100"
+  const brightIcons = ["13d", "13n", "50d", "50n", "01n"];
+  const raiseIconBrightness = brightIcons.includes(weatherData.icon)
+    ? "dark:brightness-200"
+    : "dark:brightness-100";
 
   const handleFavorite = () => {
     const oldFavorites = JSON.parse(localStorage.getItem("cities"));
@@ -49,7 +50,7 @@ function Weather() {
         transition={{
           duration: 0.5,
           ease: "linear",
-          delay: 0.1
+          delay: 0.1,
         }}
         className="card min-w-sm w-full md:max-h-[70vh] md:w-full border dark:text-[#e5e2d8] dark:border-gray-600 test shadow-lg bg-neutral-100 dark:bg-gray-700 text-purple-50 rounded-md"
       >
@@ -121,8 +122,12 @@ function Weather() {
             <div>
               <h1 className="text-black dark:text-white md:text-4xl text-3xl sm:mr-2">
                 {" "}
-                {parseFloat((weatherData.temp - 273.15) * 1.8 + 32).toFixed(1)}
-                °F{" "}
+                {units === "imperial"
+                  ? parseFloat((weatherData.temp - 273.15) * 1.8 + 32).toFixed(
+                      1
+                    )
+                  : parseFloat(weatherData.temp - 273.15).toFixed(1)}
+                {units === "imperial" ? "°F" : "°C"}{" "}
               </h1>
             </div>
           </div>
