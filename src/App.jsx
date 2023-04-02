@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { Context } from "./context/Store";
-import "./App.css";
 import Favorites from "./components/Favorites";
-import Icon from "./components/Icon";
 import Search from "./components/Search";
 import Weather from "./components/Weather";
 import { getFavoriteCities, getTheme } from "./functions/getLocalStorage";
